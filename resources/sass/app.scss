@@ -1,0 +1,40 @@
+// @import ‘~vuetify/dist/vuetify.min.css’;
+// @import ‘~@mdi/font/css/materialdesignicons.min.css’;
+
+
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+@-webkit-keyframes dash{ from{stroke-dashoffset:814;} to {stroke-dashoffset:-814;}}
+
+*{
+   font-family: 'Ubuntu', sans-serif;
+   text-decoration: none;
+}
+
+a,button{
+   user-select: none;
+   color: #303030;
+}
+
+
+hr{
+   opacity: .3;
+   background: #000000;
+   margin: 30px 0;
+}
+
+.container{
+   @media (min-width: 1904px){
+      max-width: 1140px!important;
+   }
+}
+
+
+li{
+   list-style: none;
+}
+.v-application ol, .v-application ul{
+   padding: 0!important;
+}
