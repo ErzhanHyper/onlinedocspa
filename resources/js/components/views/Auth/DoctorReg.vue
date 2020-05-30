@@ -1,8 +1,7 @@
 <template>
-   <div>
+   <div class="col">
 
-
-      <v-container>
+      <v-container text-left>
          <v-row>
 
             <v-col cols="12" class="text-left">
@@ -18,9 +17,11 @@
                @blur="$v.lastname.$touch()"
                ></v-text-field>
             </v-col>
+
             <v-col cols="12" sm="4" md="4">
                <v-text-field v-model="firstname" label="FirstName"></v-text-field>
             </v-col>
+
             <v-col cols="12" sm="4" md="4">
                <v-text-field v-model="middlename" label="MiddleName"></v-text-field>
             </v-col>
@@ -49,23 +50,10 @@
                ></v-text-field>
             </v-col>
 
-            <!-- <v-col cols="12" sm="4" md="4" >
-            <v-file-input
-            :rules="rules"
-            accept="image/png, image/jpeg, image/bmp"
-            placeholder="Pick an avatar"
-            prepend-icon="mdi-camera"
-            label="Avatar"
-            ></v-file-input> -->
-
-
-
          </v-col>
 
 
-         <v-col cols="12" sm="4" md="4">
-            <ProfilePhoto :photoData="photo" @updateParent="onUpdatePhoto"></ProfilePhoto>
-         </v-col>
+
       </v-row>
 
       <hr>
@@ -103,8 +91,10 @@
          <v-col cols="12" sm="4" md="4">
             <v-autocomplete
             v-model="specialization"
+            multiple
             label="Специальность"
             :items="specializations"
+            @change="selectSpecialization(specialization)"
             item-text="name"
             item-value="id"
             required
@@ -136,16 +126,27 @@
 
       </v-row>
 
-      <hr>
-
-
-      <v-col cols="12">
-         <v-checkbox
-         v-model="checkbox"
-         label="Do you agree?"
-         ></v-checkbox>
+      <v-col cols="12" sm="3" md="3" style="border: 1px solid #f2f2f2;" class="text-center">
+         <ProfilePhoto :photoData="photo" @updateParent="onUpdatePhoto"></ProfilePhoto>
       </v-col>
 
+      <hr>
+
+      <div>
+         <div class="agreement">
+            <div class="d-inline-flex">
+               <a class="mr-5">Пользовательское соглашение</a>
+               |
+               <a class="ml-5">Договор присоединения</a>
+               <v-checkbox v-model="checkbox" label="Вы согласны с условиями?" class="ml-10 mt-0 pt-0" required></v-checkbox>
+            </div>
+            <div style="font-size:14px">
+            Принимая условия, Вы соглашаетесь с условиями, указанными в Пользовательском соглашении и Договоре присоединения, размещенные на настоящем сайте, подтверждаете, что все условия, указанные в пользовательском соглашении и Договора присоединения Вам ясны и понятны, а также изъявляете свою волю на присоединение к указанному пользовательскому соглашению и Договору присоединения
+         </div>
+         </div>
+      </div>
+
+      <br>
 
       <v-btn class="mr-4" @click="register">Зарегистрироваться</v-btn>
    </v-container>
@@ -181,7 +182,7 @@ export default {
          city: '',
          cities: [],
 
-         specialization: '',
+         specialization: [],
          specializations: [],
 
          qualification: '',
@@ -258,6 +259,10 @@ export default {
 
       },
 
+      selectSpecialization(selected) {
+         console.log(this.specialization)
+      },
+
       register() {
          this.$v.$touch()
 
@@ -284,7 +289,6 @@ export default {
          })
          .catch(({response}) => {
             console.log(response);
-            // alert(response.data.message);
          });
       },
 
@@ -323,13 +327,5 @@ export default {
 
 <style lang="scss">
 
-button.btn.vodal-confirm-btn{
-   width: 160px;
-   margin: 0;
-}
-
-.profile_photo{
-   float: left;
-}
 
 </style>

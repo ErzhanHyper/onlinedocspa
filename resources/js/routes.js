@@ -13,7 +13,12 @@ let routes = [
 
    {
       path: '/profile',
-      component: require('./components/views/pages/Profile.vue').default,
+      component: require('./components/views/pages/profile/Profile.vue').default,
+   },
+
+   {
+      path: '/online_consultations',
+      component: require('./components/views/pages/consultations/online/Index.vue').default,
    },
 
    {
@@ -28,7 +33,7 @@ let routes = [
 
    {
       path: '/doctors',
-      component: require('./components/views/pages/Doctors/Index.vue').default,
+      component: require('./components/views/pages/doctors/Index.vue').default,
    },
 
    {

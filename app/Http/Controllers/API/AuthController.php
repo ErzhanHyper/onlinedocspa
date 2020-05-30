@@ -16,6 +16,7 @@ class AuthController extends Controller{
 
    public function register(){
 
+
       $role = null;
 
       if(request('utype') == 'doctor'){
@@ -58,15 +59,14 @@ class AuthController extends Controller{
          $doctor = Doctor::create([
             'user_id' => $user->id,
             'clinic_id' => request('clinic'),
-            'specialization_id' =>  json_encode(request('specialization')),
-            'qualification_id'  =>  request('qualification'),
-            'category_id'  =>  request('category'),
+            'specialization_id' => request('specialization'),
+            'qualification_id' => request('qualification'),
+            'category_id' => request('category'),
             'experience' => ['1', '2'],
             'agreement' => true,
-            'service_id' => json_encode(request('specialization')),
+            'service_id' => '1',
          ]);
       }
-
       // Если пользователь с таким email адресом найден - проверим совпадает
       // ли его пароль с указанным
       if (!Hash::check(request('password'), $user->password)) {
@@ -119,10 +119,10 @@ class AuthController extends Controller{
       return response()->json([
          'token' => $data->access_token,
          'user' => $user,
-         'status' => 200
+         'status' => 200,
+         'err'=> request('specialization')
       ]);
 
-      return response()->json(['status' => 201]);
    }
 
 

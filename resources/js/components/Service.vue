@@ -23,7 +23,7 @@
 <script>
 
 import {Tabs, Tab} from 'vue-tabs-component';
-import onlineDoctors from './onlineDoctors';
+import onlineDoctors from './OnlineDoctors';
 
 export default {
 

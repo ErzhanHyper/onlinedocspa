@@ -1,9 +1,9 @@
 <template>
    <div>
 
-      <img :src="defaultImage" style="width: 60px; height: 60px;" class="profile_photo">
+      <img :src="defaultImage" style="width: 180px; height: 180px;" class="profile_photo">
       <VueImageUploadCroppie :defaultImage.sync="defaultImage" :trans="photoTrans" :width="220" :height="220" circle></VueImageUploadCroppie>
-
+      <a>Требование к фото</a>
    </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
 
    data() {
       return {
-         defaultImage: '',
+         defaultImage: '/img/logo1.png',
          photoTrans: {
             cropImage: 'Фото профиля',
             chooseImage:'Загрузить фото',
@@ -43,3 +43,10 @@ export default {
 
 
 </script>
+
+<style lang="scss">
+button.btn.vodal-confirm-btn{
+   width: 160px;
+   margin: 0;
+}
+</style>

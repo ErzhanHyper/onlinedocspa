@@ -2,10 +2,11 @@
    <div>
 
       <v-row class="text-center" >
-         <h2 style="margin: 0 auto;" v-if="select_user == true">Вы?</h2>
+         <h2 style="margin: 0 auto;" v-if="select_user == true">Регистрироваться как?</h2>
          <h2 style="margin: 0 auto;" v-else>Регистрация</h2>
-
       </v-row>
+
+      <br>
 
       <v-btn class="ma-2" color="orange darken-2" dark v-if="select_user == false" @click="goBack()">
          <v-icon dark left>mdi-arrow-left</v-icon>Назад
@@ -14,7 +15,7 @@
       <hr v-if="select_user == false">
 
       <v-row class="select_user_type" v-if="select_user == true">
-         <v-col cols="4" offset="4" class="d-flex justify-space-between" >
+         <v-col cols="6" offset="3" class="d-flex justify-space-between" >
             <v-btn
             :class="{active: activeBtn === 'btn1' }"
             @click="showReg('doctor'), activeBtn = 'btn1'"
@@ -42,6 +43,23 @@
          Пациент
          <v-icon right dark>mdi-account-box</v-icon>
       </v-btn>
+
+
+      <v-btn
+      @click="showReg('patient'), activeBtn = 'btn3'"
+      color="#3A75B8"
+      :class="{active: activeBtn === 'btn3' }"
+      class=" white--text"
+      x-large
+      height="60"
+      width="140"
+      :elevation="1"
+      >
+      Клиника
+      <v-icon right dark>mdi-account-box</v-icon>
+   </v-btn>
+
+
    </v-col>
 </v-row>
 

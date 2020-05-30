@@ -19,7 +19,7 @@ export default {
       return {
          calendarPlugins: [ dayGridPlugin ],
          options: {
-            locale: 'kk-KZ',
+            locale: 'kk',
          }
       }
    }

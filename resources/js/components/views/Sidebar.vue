@@ -3,8 +3,8 @@
    <div>
       <div class="sidebar" v-if="authenticated && user" :class="{ active: menuActive }">
          <ul class="parent-menu">
-            <li><a href='/profile'><span>Профиль</span></a></li>
-            <li><a href='#'><span>Мои консультации</span></a>
+            <li><router-link to='/profile'><span>Профиль</span></router-link></li>
+            <li><router-link to='online_consultations'><span>Мои консультации</span></router-link>
                <!-- <ul class="child-menu">
                <li class='has-sub'><a href='#'><span>item 1</span></a></li>
                <li class='has-sub'><a href='#'><span>item 2</span></a></li>
